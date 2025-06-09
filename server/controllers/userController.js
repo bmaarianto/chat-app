@@ -8,7 +8,7 @@ export const signup = async (req, res) => {
   const { fullName, email, password, bio } = req.body;
 
   try {
-    if (!fullname || !email || !password || !bio) {
+    if (!fullName || !email || !password || !bio) {
       return res.json({ success: false, message: "Missing Details" });
     }
 
