@@ -1,12 +1,50 @@
-# React + Vite
+# Dokumentasi Proyek Chat App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Gambaran Umum Proyek
+Proyek ini adalah aplikasi chat real-time yang terdiri dari dua bagian utama: frontend dan backend. Frontend dibangun menggunakan React dengan Vite sebagai build tool, sedangkan backend menggunakan Express.js dengan integrasi socket.io untuk komunikasi real-time dan MongoDB sebagai database.
 
-Currently, two official plugins are available:
+## Backend
+- **Server:** Menggunakan Express.js untuk membuat REST API.
+- **Socket.io:** Digunakan untuk komunikasi real-time antara client dan server, termasuk manajemen pengguna online.
+- **Database:** MongoDB digunakan untuk menyimpan data pengguna dan pesan.
+- **Routes:**
+  - `/api/auth`: Endpoint untuk autentikasi pengguna.
+  - `/api/messages`: Endpoint untuk pengelolaan pesan.
+  - `/api/status`: Endpoint untuk pengecekan status server.
+- **Fitur utama backend:**
+  - Manajemen koneksi socket dan pengguna online.
+  - Penyimpanan dan pengambilan pesan dari database.
+  - Middleware untuk parsing JSON dan CORS.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Frontend
+- **Framework:** React dengan routing menggunakan React Router.
+- **Context API:** Menggunakan `AuthContext` untuk manajemen autentikasi dan `ChatContext` untuk manajemen data chat.
+- **Routing:**
+  - `/`: Halaman utama (HomePage), hanya dapat diakses jika pengguna sudah login.
+  - `/login`: Halaman login, hanya dapat diakses jika pengguna belum login.
+  - `/profile`: Halaman profil pengguna, hanya dapat diakses jika pengguna sudah login.
+- **Fitur utama frontend:**
+  - Tampilan splash screen saat aplikasi dimulai.
+  - Background animasi yang menarik.
+  - Notifikasi toast untuk interaksi pengguna.
+  - Manajemen status autentikasi dan data chat secara global menggunakan Context API.
 
-## Expanding the ESLint configuration
+## Cara Menjalankan Proyek
+1. **Backend:**
+   - Pastikan MongoDB sudah berjalan.
+   - Masuk ke folder `server`.
+   - Install dependencies dengan `pnpm install` atau `npm install`.
+   - Jalankan server dengan `pnpm start` atau `node server.js`.
+2. **Frontend:**
+   - Masuk ke folder `client`.
+   - Install dependencies dengan `pnpm install` atau `npm install`.
+   - Jalankan aplikasi dengan `pnpm run dev` atau `npm run dev`.
+   - Buka browser dan akses `http://localhost:3000`.
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Catatan
+- Pastikan environment variables untuk koneksi database dan konfigurasi lainnya sudah diatur dengan benar.
+- Proyek ini sudah diuji secara menyeluruh untuk memastikan semua fitur berjalan dengan baik.
+
+---
+
+Dokumentasi ini dibuat untuk memudahkan pengembang memahami struktur dan cara kerja proyek chat real-time ini.
