@@ -1,9 +1,11 @@
 # Dokumentasi Proyek Chat App
 
 ## Gambaran Umum Proyek
+
 Proyek ini adalah aplikasi chat real-time yang terdiri dari dua bagian utama: frontend dan backend. Frontend dibangun menggunakan React dengan Vite sebagai build tool, sedangkan backend menggunakan Express.js dengan integrasi socket.io untuk komunikasi real-time dan MongoDB sebagai database.
 
 ## Backend
+
 - **Server:** Menggunakan Express.js untuk membuat REST API.
 - **Socket.io:** Digunakan untuk komunikasi real-time antara client dan server, termasuk manajemen pengguna online.
 - **Database:** MongoDB digunakan untuk menyimpan data pengguna dan pesan.
@@ -17,6 +19,7 @@ Proyek ini adalah aplikasi chat real-time yang terdiri dari dua bagian utama: fr
   - Middleware untuk parsing JSON dan CORS.
 
 ## Frontend
+
 - **Framework:** React dengan routing menggunakan React Router.
 - **Context API:** Menggunakan `AuthContext` untuk manajemen autentikasi dan `ChatContext` untuk manajemen data chat.
 - **Routing:**
@@ -30,6 +33,7 @@ Proyek ini adalah aplikasi chat real-time yang terdiri dari dua bagian utama: fr
   - Manajemen status autentikasi dan data chat secara global menggunakan Context API.
 
 ## Cara Menjalankan Proyek
+
 1. **Backend:**
    - Pastikan MongoDB sudah berjalan.
    - Masuk ke folder `server`.
@@ -42,9 +46,14 @@ Proyek ini adalah aplikasi chat real-time yang terdiri dari dua bagian utama: fr
    - Buka browser dan akses `http://localhost:3000`.
 
 ## Catatan
+
 - Pastikan environment variables untuk koneksi database dan konfigurasi lainnya sudah diatur dengan benar.
 - Proyek ini sudah diuji secara menyeluruh untuk memastikan semua fitur berjalan dengan baik.
 
 ---
 
 Dokumentasi ini dibuat untuk memudahkan pengembang memahami struktur dan cara kerja proyek chat real-time ini.
+
+## Live Demo
+
+Anda dapat mencoba demo langsung dari aplikasi chat ini di [https://chat-app-iota-sooty.vercel.app/](https://chat-app-iota-sooty.vercel.app/).
