@@ -1,6 +1,8 @@
-import React, { useContext, useState } from "react";
-import assets from "../assets/assets";
+"use client";
+
+import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
+import { MessageCircle, ArrowLeft } from "lucide-react";
 
 const LoginPage = () => {
   const [currState, setCurrState] = useState("Sign up");
@@ -29,31 +31,41 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="min-h-screen bg-cover bg-center flex items-center justify-center gap-8 sm:justify-evenly max-sm:flex-col backdrop-blur-2xl">
+    <div className="min-h-screen flex items-center justify-center gap-4 sm:gap-8 p-4 flex-col lg:flex-row lg:justify-evenly">
       {/* Left */}
-      <img src={assets.logo_big} alt="" className="w-[min(30vw,250px)]" />
+      <div className="flex flex-col items-center gap-3 sm:gap-4 z-10 text-center lg:text-left">
+        <div className="flex items-center gap-2 sm:gap-3 group">
+          <MessageCircle className="w-10 h-10 sm:w-12 sm:h-12 text-violet-500 transition-transform duration-300 group-hover:scale-110" />
+          <span className="text-3xl sm:text-4xl font-bold text-white transition-colors duration-300 group-hover:text-violet-400">
+            Blabber
+          </span>
+        </div>
+        <p className="text-gray-300 text-center text-sm sm:text-base max-w-xs sm:max-w-sm">
+          Connect and chat with anyone, anywhere
+        </p>
+      </div>
+
       {/* Right */}
       <form
         onSubmit={onSubmitHandler}
-        className="border-2 bg-white/8 text-white border-gray-500 p-6 flex flex-col gap-6 rounded-lg shadow-lg"
+        className="border-2 bg-gray-900/70 backdrop-blur-xl text-white border-gray-700/50 p-6 sm:p-8 flex flex-col gap-4 sm:gap-6 rounded-2xl shadow-2xl w-full max-w-md z-10 animate-slide-up"
       >
-        <h2 className="font-medium text-2xl flex justify-between items-center">
+        <h2 className="font-medium text-xl sm:text-2xl flex justify-between items-center">
           {currState}
           {isDataSubmitted && (
-            <img
+            <ArrowLeft
               onClick={() => setIsDataSubmitted(false)}
-              src={assets.arrow_icon}
-              alt=""
-              className="w-5 cursor-pointer"
+              className="w-5 h-5 cursor-pointer text-gray-300 hover:text-white transition-all duration-300 hover:scale-110 active:scale-95"
             />
           )}
         </h2>
+
         {currState === "Sign up" && !isDataSubmitted && (
           <input
             onChange={(e) => setFullName(e.target.value)}
             value={fullName}
             type="text"
-            className="p-2 border border-gray-500 rounded-md focus:outline-none"
+            className="p-3 border border-gray-600/50 bg-gray-800/50 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300 focus:scale-[1.02]"
             placeholder="Full Name"
             required
           />
@@ -67,7 +79,7 @@ const LoginPage = () => {
               type="email"
               placeholder="Email Address"
               required
-              className="p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="p-3 border border-gray-600/50 bg-gray-800/50 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300 focus:scale-[1.02]"
             />
             <input
               onChange={(e) => setPassword(e.target.value)}
@@ -75,7 +87,7 @@ const LoginPage = () => {
               type="password"
               placeholder="Password"
               required
-              className="p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              className="p-3 border border-gray-600/50 bg-gray-800/50 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300 focus:scale-[1.02]"
             />
           </>
         )}
@@ -85,7 +97,7 @@ const LoginPage = () => {
             onChange={(e) => setBio(e.target.value)}
             value={bio}
             rows={4}
-            className="p-2 border border-gray-500 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            className="p-3 border border-gray-600/50 bg-gray-800/50 backdrop-blur-sm rounded-xl focus:outline-none focus:ring-2 focus:ring-violet-500 focus:border-transparent text-white placeholder-gray-400 transition-all duration-300 focus:scale-[1.02] resize-none"
             placeholder="Provide a short bio..."
             required
           ></textarea>
@@ -93,36 +105,36 @@ const LoginPage = () => {
 
         <button
           type="submit"
-          className="py-3 bg-gradient-to-r from-purple-400 to-violet-600 text-white rounded-md cursor-pointer"
+          className="py-3 bg-gradient-to-r from-purple-400 to-violet-600 hover:from-purple-500 hover:to-violet-700 text-white rounded-xl cursor-pointer transition-all duration-300 hover:scale-105 active:scale-95 font-medium"
         >
           {currState === "Sign up" ? "Create Account" : "Login Now"}
         </button>
 
         <div className="flex items-center gap-2 text-sm text-gray-500">
-          <input type="checkbox" />
+          <input type="checkbox" className="accent-violet-500" />
           <p>Agree to the terms of use & privacy policy.</p>
         </div>
 
         <div className="flex flex-col gap-2">
           {currState === "Sign up" ? (
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 text-center">
               Already have an account?{" "}
               <span
                 onClick={() => {
                   setCurrState("Login");
                   setIsDataSubmitted(false);
                 }}
-                className="font-medium text-violet-500 cursor-pointer"
+                className="font-medium text-violet-500 cursor-pointer hover:text-violet-400 transition-colors duration-300"
               >
                 Login here
               </span>
             </p>
           ) : (
-            <p className="text-sm text-gray-600">
+            <p className="text-sm text-gray-600 text-center">
               Create an account{" "}
               <span
                 onClick={() => setCurrState("Sign up")}
-                className="font-medium text-violet-500 cursor-pointer"
+                className="font-medium text-violet-500 cursor-pointer hover:text-violet-400 transition-colors duration-300"
               >
                 Click here
               </span>
