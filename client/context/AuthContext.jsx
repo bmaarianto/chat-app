@@ -42,7 +42,7 @@ export const AuthProvider = ({ children }) => {
         toast.error(data.message);
       }
     } catch (error) {
-      toast.error(error.mesasge);
+      toast.error(error.message);
     }
   };
 
@@ -64,9 +64,9 @@ export const AuthProvider = ({ children }) => {
       if (data.success) {
         setAuthUser(data.user);
         toast.success("Profile updated successfully");
-      }
+    } 
     } catch (error) {
-      toast.error(error.mesasge);
+      toast.error(error.message);
     }
   };
 
